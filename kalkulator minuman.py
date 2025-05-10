@@ -1,4 +1,6 @@
 import streamlit as st
+import time
+import random
 
 # Game sederhana sebelum kalkulator
 st.title("Selamat Datang di Caffeine Tracker!")
@@ -13,16 +15,23 @@ if not st.session_state["game_completed"]:
     if "game_start_time" not in st.session_state:
         st.session_state["game_start_time"] = None
 
+    if "fireworks_shown" not in st.session_state:
+        st.session_state["fireworks_shown"] = False
+
     if st.session_state["game_start_time"] is None:
         if st.button("Mulai Game"):
-            st.session_state["game_start_time"] = st.time()
+            st.session_state["game_start_time"] = time.time()
     else:
-        elapsed_time = st.time() - st.session_state["game_start_time"]
+        elapsed_time = time.time() - st.session_state["game_start_time"]
         if elapsed_time >= 5:
+            if not st.session_state["fireworks_shown"]:
+                st.balloons()
+                st.session_state["fireworks_shown"] = True
             st.success("Game selesai! Anda dapat mengakses kalkulator.")
             st.session_state["game_completed"] = True
         else:
             st.write(f"Tunggu selama {5 - int(elapsed_time)} detik lagi...")
+            st.progress(min(int((elapsed_time / 5) * 100), 100))
 
 # Kalkulator kafein jika game selesai
 if st.session_state["game_completed"]:

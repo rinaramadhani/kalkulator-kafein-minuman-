@@ -67,6 +67,4 @@ if st.session_state["game_completed"]:
         st.write(f"Batas kafein harian Anda adalah **{batas_harian:.2f} mg**.")
 
         if sisa_konsumsi > 0:
-            st.success(f"Anda masih bisa mengonsumsi sekitar **{sisa_konsumsi:.2f} mg** kafein hari ini.")
-        else:
-            st.warning("Anda telah mencapai atau melebihi batas kafein harian Anda. Hindari konsumsi lebih lanjut!")
+            st.success(f"Anda masih bisa

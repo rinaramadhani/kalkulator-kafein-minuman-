@@ -26,10 +26,19 @@ def hitung_kafein_terkonsumsi(jenis_minuman, ml):
     return (kandungan_kafein.get(jenis_minuman, 0) * ml) / 100
 
 # Sidebar navigasi
-menu = st.sidebar.radio("Navigasi", ["Home", "Tentang Kami"])
+menu = st.sidebar.radio("Navigasi", ["Home", "Kalkulator Kafein", "Tentang Kami"])
 
 # Halaman Home
 if menu == "Home":
+    st.title("Selamat Datang di Kalkulator Kafein☕")
+    st.write("""
+    **Kalkulator Kafein Harian** membantu Anda mengetahui batas aman konsumsi kafein berdasarkan usia, jenis kelamin, 
+    dan jenis minuman. Gunakan fitur ini untuk menjaga kesehatan Anda dan keluarga! 
+    Pilih menu **Kalkulator Kafein** untuk memulai perhitungan. 😊
+    """)
+
+# Halaman Kalkulator Kafein
+elif menu == "Kalkulator Kafein":
     # Judul aplikasi
     st.title("Kalkulator Batas Kafein Harian☕")
 
@@ -64,15 +73,17 @@ if menu == "Home":
 elif menu == "Tentang Kami":
     st.title("Tentang Kami")
     st.write("""
-    **Kalkulator Batas Kafein Harian** adalah aplikasi sederhana untuk membantu Anda mengelola konsumsi kafein harian dengan mudah. 
-    Kami percaya bahwa kesehatan adalah prioritas, dan memahami batas konsumsi kafein dapat membantu mencegah efek buruk kafein berlebih.
+    **Kalkulator Batas Kafein Harian** adalah aplikasi sederhana yang dirancang untuk membantu Anda mengelola konsumsi kafein dengan mudah.
+    
+    **Pengembang:**
+    - Aplikasi ini dibuat oleh **Kelompok 9** sebagai bagian dari proyek pembelajaran.
+    - Tujuannya adalah memberikan alat yang praktis untuk menjaga kesehatan dengan membatasi konsumsi kafein berlebih.
 
     **Fitur Utama:**
-    - Kalkulasi berdasarkan usia dan jenis kelamin.
-    - Daftar sumber kafein dengan kandungan yang terperinci.
-    - Informasi interaktif tentang status konsumsi kafein Anda.
+    - Perhitungan batas kafein berdasarkan usia dan jenis kelamin.
+    - Kalkulasi konsumsi kafein dari berbagai jenis minuman.
+    - Informasi yang interaktif dan mudah digunakan.
 
-    **Dibuat oleh:**
-    - Developer: [Nama Anda]
-    - Kontak: [Email atau media sosial Anda]
+    **Terima kasih telah menggunakan aplikasi kami! 😊**
     """)
+

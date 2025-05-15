@@ -34,7 +34,8 @@ if menu == "Home":
     st.write("""
     **Kalkulator Kafein Harian** membantu Anda mengetahui batas aman konsumsi kafein berdasarkan usia, jenis kelamin, 
     dan jenis minuman. Gunakan fitur ini untuk menjaga kesehatan Anda dan keluarga! 
-    Pilih menu **Kalkulator Kafein** untuk memulai perhitungan. 😊
+    Pilih menu **Kalkulator Kafein** untuk memulai perhitungan. 🤩
+
     """)
 
 # Halaman Kalkulator Kafein

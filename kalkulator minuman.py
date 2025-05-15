@@ -25,33 +25,54 @@ def hitung_kafein_terkonsumsi(jenis_minuman, ml):
     }
     return (kandungan_kafein.get(jenis_minuman, 0) * ml) / 100
 
-# Judul aplikasi
-st.title("Kalkulator Batas Kafein Harian☕")
+# Sidebar navigasi
+menu = st.sidebar.radio("Navigasi", ["Home", "Tentang Kami"])
 
-# Input dari pengguna
-usia = st.number_input("Usia (tahun):", min_value=0, step=1, help="Masukkan usia Anda (min. 0 tahun).")
-jenis_kelamin = st.radio("Jenis Kelamin:", ["Laki-laki", "Perempuan"], index=0)
-jenis_minuman = st.selectbox(
-    "Sumber Kafein:",
-    ["Minuman Soda", "Minuman Coklat", "Kopi", "Minuman Berenergi", "Matcha", "Espresso", "Teh Hijau", "Teh Hitam", "Cappuccino", "Americano"]
-)
-ml_dikonsumsi = st.slider("Berapa ml yang diminum:", min_value=0, max_value=1000, step=50)
+# Halaman Home
+if menu == "Home":
+    # Judul aplikasi
+    st.title("Kalkulator Batas Kafein Harian☕")
 
-# Hitung hasil
-if st.button("Hitung"):
-    batas_aman = hitung_batas_aman_kafein(usia, jenis_kelamin)
-    kafein_terkonsumsi = hitung_kafein_terkonsumsi(jenis_minuman, ml_dikonsumsi)
-    sisa_kafein = max(batas_aman - kafein_terkonsumsi, 0)
+    # Input dari pengguna
+    berat_badan = st.number_input("Berat Badan (kg):", min_value=0.0, step=0.1)
+    usia = st.number_input("Usia (tahun):", min_value=0, step=1)
+    jenis_kelamin = st.radio("Jenis Kelamin:", ["Laki-laki", "Perempuan"])
+    jenis_minuman = st.selectbox(
+        "Sumber Kafein:",
+        ["Minuman Soda", "Minuman Coklat", "Kopi", "Minuman Berenergi", "Matcha", "Espresso", "Teh Hijau", "Teh Hitam", "Cappuccino", "Americano"]
+    )
+    ml_dikonsumsi = st.number_input("Berapa ml yang diminum:", min_value=0, step=1)
 
-    # Tampilkan hasil
-    st.subheader("Hasil Perhitungan:")
-    st.write(f"**Jenis Minuman:** {jenis_minuman}")
-    st.write(f"**Kandungan Kafein (per 100 ml):** {hitung_kafein_terkonsumsi(jenis_minuman, 100):.2f} mg")
-    st.write(f"**Batas Harian:** {batas_aman} mg")
-    st.write(f"**Konsumsi Kafein:** {kafein_terkonsumsi:.2f} mg")
-    st.write(f"**Sisa Batas Aman:** {sisa_kafein:.2f} mg")
+    # Hitung hasil
+    if st.button("Hitung"):
+        batas_aman = hitung_batas_aman_kafein(usia, jenis_kelamin)
+        kafein_terkonsumsi = hitung_kafein_terkonsumsi(jenis_minuman, ml_dikonsumsi)
+        sisa_kafein = max(batas_aman - kafein_terkonsumsi, 0)
 
-    if sisa_kafein > 0:
-        st.success(f"**Status:** Aman✅, Anda masih dalam batas konsumsi kafein yang aman😊.")
-    else:
-        st.warning("**Status:** Tidak Aman❗, Anda telah melewati batas konsumsi kafein harian yang aman!😔")
+        # Tampilkan hasil
+        st.subheader("Hasil Perhitungan:")
+        st.write(f"**Batas Harian:** {batas_aman} mg")
+        st.write(f"**Konsumsi Kafein:** {kafein_terkonsumsi:.2f} mg")
+        st.write(f"**Sisa Batas Aman:** {sisa_kafein:.2f} mg")
+
+        if sisa_kafein > 0:
+            st.write(f"**Status:** Aman✅, Anda masih dalam batas konsumsi kafein yang aman😊.")
+        else:
+            st.warning("**Status:** Tidak Aman❗, Anda telah melewati batas konsumsi kafein harian yang aman!😔")
+
+# Halaman Tentang Kami
+elif menu == "Tentang Kami":
+    st.title("Tentang Kami")
+    st.write("""
+    **Kalkulator Batas Kafein Harian** adalah aplikasi sederhana untuk membantu Anda mengelola konsumsi kafein harian dengan mudah. 
+    Kami percaya bahwa kesehatan adalah prioritas, dan memahami batas konsumsi kafein dapat membantu mencegah efek buruk kafein berlebih.
+
+    **Fitur Utama:**
+    - Kalkulasi berdasarkan usia dan jenis kelamin.
+    - Daftar sumber kafein dengan kandungan yang terperinci.
+    - Informasi interaktif tentang status konsumsi kafein Anda.
+
+    **Dibuat oleh:**
+    - Developer: [Nama Anda]
+    - Kontak: [Email atau media sosial Anda]
+    """)

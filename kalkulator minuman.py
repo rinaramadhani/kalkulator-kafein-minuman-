@@ -1,12 +1,12 @@
 import streamlit as st
 
 # Fungsi untuk menambahkan CSS background
-def tambah_background(https://images.app.goo.gl/bRdAj2CtmDZxUwNV9):
+def tambah_background(image_path):
     st.markdown(
         f"""
         <style>
         .stApp {{
-            background-image: url({image_url});
+            background-image: url("data:image/jpeg;base64,{image_path}");
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -16,34 +16,17 @@ def tambah_background(https://images.app.goo.gl/bRdAj2CtmDZxUwNV9):
         unsafe_allow_html=True
     )
 
-# Fungsi untuk menghitung batas aman konsumsi kafein
-def hitung_batas_aman_kafein(usia, jenis_kelamin):
-    if usia < 18:
-        return 100  # Anak-anak
-    elif jenis_kelamin == "Laki-laki":
-        return 400  # Dewasa laki-laki
-    else:
-        return 300  # Dewasa perempuan
-
-# Fungsi untuk menghitung konsumsi kafein berdasarkan jenis minuman
-def hitung_kafein_terkonsumsi(jenis_minuman, ml):
-    kandungan_kafein = {
-        "Minuman Soda": 10,      # mg per 100 ml
-        "Minuman Coklat": 5,    # mg per 100 ml
-        "Kopi": 40,             # mg per 100 ml
-        "Minuman Berenergi": 30, # mg per 100 ml
-        "Matcha": 25,           # mg per 100 ml
-        "Espresso": 212,        # mg per 100 ml
-        "Teh Hijau": 12,        # mg per 100 ml
-        "Teh Hitam": 47,        # mg per 100 ml
-        "Cappuccino": 77,       # mg per 100 ml
-        "Americano": 94         # mg per 100 ml
-    }
-    return (kandungan_kafein.get(jenis_minuman, 0) * ml) / 100
+# Fungsi untuk membaca gambar sebagai base64
+import base64
+def baca_gambar_untuk_css(path):
+    with open(path, "rb") as file:
+        data = file.read()
+    return base64.b64encode(data).decode()
 
 # Tambahkan background
-image_url = "https://images.unsplash.com/photo-1509042239860-f550ce710b93?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fGNvZmZlZSUyMGFuZCUyMGNhZmZlaW58ZW58MHx8fHwxNjg0MjAxMzM3&ixlib=rb-1.2.1&q=80&w=1080"
-tambah_background(image_url)
+image_path = "/mnt/data/WhatsApp Image 2025-05-17 at 10.15.59_4adf024d.jpg"
+background_image = baca_gambar_untuk_css(image_path)
+tambah_background(background_image)
 
 # Sidebar navigasi
 menu = st.sidebar.radio("Navigasi", ["Home", "Kalkulator Kafein", "Tentang Kami"])
@@ -102,4 +85,5 @@ elif menu == "Tentang Kami":
 
     **Terima kasih telah menggunakan aplikasi kami! 😊**
     """)
+
 

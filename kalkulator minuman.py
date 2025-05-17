@@ -38,13 +38,13 @@ if menu == "Home":
     Pilih menu *Kalkulator Kafein* untuk memulai perhitungan. 🤩
     """)
 
-    st.subheader("Apa Itu Kafein?")
+    st.subheader("Apa Itu Kafein?🤔")
     st.write("""
     Kafein adalah senyawa alami yang ditemukan dalam daun dan biji berbagai tanaman seperti kopi, teh, dan kakao. 
     Kafein bekerja sebagai stimulan yang mempengaruhi sistem saraf pusat untuk meningkatkan energi dan kewaspadaan sementara.
     """)
 
-    st.subheader("Manfaat Kafein:")
+    st.subheader("Manfaat Kafein🤫:")
     st.markdown("""
     - ✅ Meningkatkan fokus dan konsentrasi  
     - ✅ Membantu mengurangi rasa lelah  
@@ -52,7 +52,7 @@ if menu == "Home":
     - ✅ Dapat membantu suasana hati (mood booster)  
     """)
 
-    st.subheader("Efek Samping Kafein Jika Berlebihan:")
+    st.subheader("Efek Samping Kafein Jika Berlebihan😵:")
     st.markdown("""
     - ❌ Gangguan tidur dan insomnia  
     - ❌ Jantung berdebar (palpitasi)  

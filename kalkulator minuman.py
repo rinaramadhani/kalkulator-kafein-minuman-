@@ -1,4 +1,12 @@
 import streamlit as st
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.fakta-seru {
+    animation: fadeInUp 1s ease-in-out;
+}
+
 
 # Fungsi untuk menghitung batas aman konsumsi kafein
 def hitung_batas_aman_kafein(usia, jenis_kelamin):
@@ -27,7 +35,6 @@ def hitung_kafein_terkonsumsi(jenis_minuman, ml):
 
 # Sidebar navigasi
 menu = st.sidebar.radio("Navigasi", ["Home", "Kalkulator Kafein", "Tentang Kami"])
-
 
 # Halaman Home
 if menu == "Home":

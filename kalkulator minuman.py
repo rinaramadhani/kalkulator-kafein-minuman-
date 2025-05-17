@@ -1,5 +1,21 @@
 import streamlit as st
 
+# Fungsi untuk menambahkan CSS background
+def tambah_background(https://images.app.goo.gl/bRdAj2CtmDZxUwNV9):
+    st.markdown(
+        f"""
+        <style>
+        .stApp {{
+            background-image: url({image_url});
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
 # Fungsi untuk menghitung batas aman konsumsi kafein
 def hitung_batas_aman_kafein(usia, jenis_kelamin):
     if usia < 18:
@@ -25,6 +41,10 @@ def hitung_kafein_terkonsumsi(jenis_minuman, ml):
     }
     return (kandungan_kafein.get(jenis_minuman, 0) * ml) / 100
 
+# Tambahkan background
+image_url = "https://images.unsplash.com/photo-1509042239860-f550ce710b93?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fGNvZmZlZSUyMGFuZCUyMGNhZmZlaW58ZW58MHx8fHwxNjg0MjAxMzM3&ixlib=rb-1.2.1&q=80&w=1080"
+tambah_background(image_url)
+
 # Sidebar navigasi
 menu = st.sidebar.radio("Navigasi", ["Home", "Kalkulator Kafein", "Tentang Kami"])
 
@@ -34,16 +54,13 @@ if menu == "Home":
     st.write("""
     **Kalkulator Kafein Harian** membantu Anda mengetahui batas aman konsumsi kafein berdasarkan usia, jenis kelamin, 
     dan jenis minuman. Gunakan fitur ini untuk menjaga kesehatan Anda dan keluarga! 
-    Pilih menu **Kalkulator Kafein** untuk memulai perhitungan. 🤩
-
+    Pilih menu **Kalkulator Kafein** untuk memulai perhitungan. 😊
     """)
 
 # Halaman Kalkulator Kafein
 elif menu == "Kalkulator Kafein":
-    # Judul aplikasi
     st.title("Kalkulator Batas Kafein Harian☕")
 
-    # Input dari pengguna
     berat_badan = st.number_input("Berat Badan (kg):", min_value=0.0, step=0.1)
     usia = st.number_input("Usia (tahun):", min_value=0, step=1)
     jenis_kelamin = st.radio("Jenis Kelamin:", ["Laki-laki", "Perempuan"])
@@ -53,13 +70,11 @@ elif menu == "Kalkulator Kafein":
     )
     ml_dikonsumsi = st.number_input("Berapa ml yang diminum:", min_value=0, step=1)
 
-    # Hitung hasil
     if st.button("Hitung"):
         batas_aman = hitung_batas_aman_kafein(usia, jenis_kelamin)
         kafein_terkonsumsi = hitung_kafein_terkonsumsi(jenis_minuman, ml_dikonsumsi)
         sisa_kafein = max(batas_aman - kafein_terkonsumsi, 0)
 
-        # Tampilkan hasil
         st.subheader("Hasil Perhitungan:")
         st.write(f"**Batas Harian:** {batas_aman} mg")
         st.write(f"**Konsumsi Kafein:** {kafein_terkonsumsi:.2f} mg")

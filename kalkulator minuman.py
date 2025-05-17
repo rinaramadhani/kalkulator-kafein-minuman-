@@ -1,12 +1,47 @@
 import streamlit as st
 
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-.fakta-seru {
-    animation: fadeInUp 1s ease-in-out;
-}
+# Tambahkan background image & style
+st.markdown("""
+    <style>
+    .stApp {
+        background-image: url("https://i.pinimg.com/736x/73/e6/3f/73e63f3961ed68e42e4628c8155ecd38.jpg");
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    .main {
+        background-color: rgba(255, 255, 255, 0.85);
+        padding: 0px;
+        border-radius: 10px;
+        margin-top: 5%;
+    }
+    .title {
+        color: Black;
+        text-align: center;
+    }
+    h3 {
+        color: Black;
+    }
+    .custom-text {
+        color: Black;
+        font-size: 16px;
+        font-family: 'Calibri', 'Segoe UI', sans-serif;
+    }
+    .fakta-seru {
+        position: fixed;
+        bottom: 10px;
+        left: 10px;
+        background-color: rgba(255,255,255,0.9);
+        padding: 12px 18px;
+        border-radius: 10px;
+        font-size: 14px;
+        font-family: 'Segoe UI', sans-serif;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        max-width: 300px;
+    }
+    </style>
+""", unsafe_allow_html=True)
 
 # Fungsi untuk menghitung batas aman konsumsi kafein
 def hitung_batas_aman_kafein(usia, jenis_kelamin):

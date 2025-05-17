@@ -4,7 +4,7 @@ import streamlit as st
 st.markdown("""
     <style>
     .stApp {
-        background-image: url("https://i.pinimg.com/736x/63/52/e6/6352e6a4065dfa3e6ded6e1a4574fbb7.jpg");
+        background-image: url("https://i.pinimg.com/736x/93/29/7b/93297ba6c5da6dd44cb05d74f39d78cb.jpg");
         background-size: cover;
         background-attachment: fixed;
         background-repeat: no-repeat;

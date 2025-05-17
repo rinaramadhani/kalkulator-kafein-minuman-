@@ -36,39 +36,33 @@ if menu == "Home":
     *Kalkulator Kafein Harian* membantu Anda mengetahui batas aman konsumsi kafein berdasarkan usia, jenis kelamin, 
     dan jenis minuman. Gunakan fitur ini untuk menjaga kesehatan Anda dan keluarga! 
     Pilih menu *Kalkulator Kafein* untuk memulai perhitungan. 🤩
-    
-    ---
-    
-    ### Apa Itu Kafein?
-    Kafein adalah stimulan psikoaktif yang secara alami terdapat pada lebih dari 60 jenis tumbuhan, terutama kopi, teh, dan kakao. 
-    Kafein bekerja dengan menstimulasi otak dan sistem saraf pusat untuk membantu seseorang tetap waspada dan mencegah kelelahan. 
-    Kafein juga meningkatkan sirkulasi bahan kimia seperti kortisol dan adrenalin dalam tubuh. 
-    Kafein ditemukan oleh kimiawan Jerman, *Friedrich Ferdinand Runge, pada tahun **1819*.
-    
-    ---
-    
-    ### Manfaat Kafein
-    - Meningkatkan fokus dan kewaspadaan
-    - Meningkatkan performa olahraga
-    - Mengurangi rambut rontok
-    - Membantu menurunkan berat badan
-    - Meredakan sakit kepala dan migrain
-    - Membantu mencegah penyakit seperti jantung, diabetes, dan kanker
-    
-    ---
-    
-    ### Efek Samping Konsumsi Berlebihan
-    Konsumsi kafein yang berlebihan dapat menyebabkan:
-    - Kecemasan dan kegelisahan
-    - Sulit tidur (insomnia)
-    - Detak jantung tidak teratur
-    - Sakit kepala
-    - Peningkatan tekanan darah
-    - Gangguan pencernaan seperti mual, muntah, diare
-    - Sering buang air kecil
-    
-    Gunakan kafein dengan bijak untuk mendapatkan manfaatnya tanpa membahayakan kesehatan Anda.
-    """)
+    """)
+
+    st.subheader("Apa Itu Kafein?")
+    st.write("""
+    Kafein adalah senyawa alami yang ditemukan dalam daun dan biji berbagai tanaman seperti kopi, teh, dan kakao. 
+    Kafein bekerja sebagai stimulan yang mempengaruhi sistem saraf pusat untuk meningkatkan energi dan kewaspadaan sementara.
+    """)
+
+    st.subheader("Manfaat Kafein:")
+    st.markdown("""
+    - ✅ Meningkatkan fokus dan konsentrasi  
+    - ✅ Membantu mengurangi rasa lelah  
+    - ✅ Meningkatkan performa olahraga  
+    - ✅ Dapat membantu suasana hati (mood booster)  
+    """)
+
+    st.subheader("Efek Samping Kafein Jika Berlebihan:")
+    st.markdown("""
+    - ❌ Gangguan tidur dan insomnia  
+    - ❌ Jantung berdebar (palpitasi)  
+    - ❌ Kecemasan dan gelisah  
+    - ❌ Gangguan pencernaan seperti sakit perut atau asam lambung naik  
+    - ❌ Ketergantungan kafein (caffeine withdrawal)  
+    """)
+
+    st.info("Ingat, konsumsi kafein yang bijak dapat memberikan manfaat. Namun, pastikan tetap dalam batas yang aman setiap harinya.")
+
 
 # Halaman Kalkulator Kafein
 elif menu == "Kalkulator Kafein":

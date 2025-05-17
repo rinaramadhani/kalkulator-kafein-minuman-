@@ -1,5 +1,25 @@
 import streamlit as st
 
+# Fungsi untuk menambahkan latar belakang dari file lokal
+def tambah_background(image_file):
+    with open(image_file, "rb") as file:
+        data = file.read()
+    b64 = base64.b64encode(data).decode()
+    st.markdown(
+        f"""
+        <style>
+        .stApp {{
+            background-image: url("data:image/jpeg;base64,{b64}");
+            background-size: cover;
+            background-attachment: fixed;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+    # Tambahkan background dari file lokal
+tambah_background("coffee_bg.jpg")  # Ganti dengan nama file Anda
+
 # Fungsi untuk menghitung batas aman konsumsi kafein
 def hitung_batas_aman_kafein(usia, jenis_kelamin):
     if usia < 18:

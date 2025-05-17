@@ -1,12 +1,15 @@
 import streamlit as st
 
-# Fungsi untuk menambahkan latar belakang dari URL
-def tambah_background_from_url(image_url):
+# Fungsi untuk menambahkan latar belakang dari file lokal
+def tambah_background_from_local(image_file):
+    with open(image_file, "rb") as f:
+        image_data = f.read()
+    b64_image = f"data:image/jpeg;base64,{image_data.decode('utf-8')}"
     st.markdown(
         f"""
         <style>
         .stApp {{
-            background-image: url("{image_url}");
+            background-image: url("{b64_image}");
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -16,9 +19,8 @@ def tambah_background_from_url(image_url):
         unsafe_allow_html=True
     )
 
-# URL gambar
-image_url = "http://images.gofreedownload.net/3/set-of-dark-coffee-vector-background-106654.jpg"
-tambah_background_from_url(image_url)
+# Tambahkan background lokal
+tambah_background_from_local("background.jpg")
 
 # Sidebar navigasi
 menu = st.sidebar.radio("Navigasi", ["Home", "Kalkulator Kafein", "Tentang Kami"])
@@ -52,4 +54,17 @@ elif menu == "Kalkulator Kafein":
             return 300  # Dewasa perempuan
 
     # Fungsi untuk menghitung konsumsi kafein berdasarkan jenis minuman
-    def hitung
+    def hitung_kafein_terkonsumsi(jenis_minuman, ml):
+        kandungan_kafein = {
+            "Minuman Soda": 10,      # mg per 100 ml
+            "Minuman Coklat": 5,    # mg per 100 ml
+            "Kopi": 40,             # mg per 100 ml
+            "Minuman Berenergi": 30, # mg per 100 ml
+            "Matcha": 25,           # mg per 100 ml
+            "Espresso": 212,        # mg per 100 ml
+            "Teh Hijau": 12,        # mg per 100 ml
+            "Teh Hitam": 47,        # mg per 100 ml
+            "Cappuccino": 77,       # mg per 100 ml
+            "Americano": 94         # mg per 100 ml
+        }
+        return (kandungan_kafein.get(jenis_minuman, 0) * ml) / 100*

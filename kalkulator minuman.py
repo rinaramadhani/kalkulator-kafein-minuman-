@@ -1,12 +1,15 @@
 import streamlit as st
+import base64
 
-# Fungsi untuk menambahkan CSS background
+# Fungsi untuk menambahkan latar belakang
 def tambah_background(image_path):
+    with open(image_path, "rb") as image_file:
+        encoded_image = base64.b64encode(image_file.read()).decode()
     st.markdown(
         f"""
         <style>
         .stApp {{
-            background-image: url("data:image/jpeg;base64,{image_path}");
+            background-image: url("data:image/jpeg;base64,{encoded_image}");
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -16,20 +19,37 @@ def tambah_background(image_path):
         unsafe_allow_html=True
     )
 
-# Fungsi untuk membaca gambar sebagai base64
-import base64
-def baca_gambar_untuk_css(path):
-    with open(path, "rb") as file:
-        data = file.read()
-    return base64.b64encode(data).decode()
-
-# Tambahkan background
-image_path = "/mnt/data/WhatsApp Image 2025-05-17 at 10.15.59_4adf024d.jpg"
-background_image = baca_gambar_untuk_css(image_path)
-tambah_background(background_image)
+# Path ke gambar latar belakang
+image_path = "background.jpg"  # Ubah sesuai dengan lokasi gambar Anda
+tambah_background(image_path)
 
 # Sidebar navigasi
 menu = st.sidebar.radio("Navigasi", ["Home", "Kalkulator Kafein", "Tentang Kami"])
+
+# Fungsi untuk menghitung batas aman kafein
+def hitung_batas_aman_kafein(usia, jenis_kelamin):
+    if usia < 18:
+        return 100  # Anak-anak
+    elif jenis_kelamin == "Laki-laki":
+        return 400  # Dewasa laki-laki
+    else:
+        return 300  # Dewasa perempuan
+
+# Fungsi untuk menghitung konsumsi kafein berdasarkan jenis minuman
+def hitung_kafein_terkonsumsi(jenis_minuman, ml):
+    kandungan_kafein = {
+        "Minuman Soda": 10,      # mg per 100 ml
+        "Minuman Coklat": 5,    # mg per 100 ml
+        "Kopi": 40,             # mg per 100 ml
+        "Minuman Berenergi": 30, # mg per 100 ml
+        "Matcha": 25,           # mg per 100 ml
+        "Espresso": 212,        # mg per 100 ml
+        "Teh Hijau": 12,        # mg per 100 ml
+        "Teh Hitam": 47,        # mg per 100 ml
+        "Cappuccino": 77,       # mg per 100 ml
+        "Americano": 94         # mg per 100 ml
+    }
+    return (kandungan_kafein.get(jenis_minuman, 0) * ml) / 100
 
 # Halaman Home
 if menu == "Home":
@@ -85,5 +105,4 @@ elif menu == "Tentang Kami":
 
     **Terima kasih telah menggunakan aplikasi kami! 😊**
     """)
-
 
